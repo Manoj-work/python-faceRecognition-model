@@ -1,0 +1,22 @@
+# Python cache and compiled files
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+
+# Virtual environment
+venv/
+.env
+
+# Model and image files
+*.onnx
+*.pt
+images/
+uploads/
+temp/
+
+# IDE and system files
+.vscode/
+.idea/
+.DS_Store
