@@ -1,7 +1,7 @@
 from pymongo import MongoClient
 
 # Connect to MongoDB Atlas
-client = MongoClient("mongodb+srv://singhsaurav182001:2nxNgYzqBIMAtSJE@cluster0.ft9op.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0")
+client = MongoClient("mongodb://medhir:medhir@192.168.0.200:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.3.8")
 
 # Use the 'attendance' database (it will be created automatically if not exists)
 db = client["attendance"]
