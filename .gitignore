@@ -12,6 +12,7 @@ venv/
 # Model and image files
 *.onnx
 *.pt
+*.tar
 images/
 uploads/
 temp/
