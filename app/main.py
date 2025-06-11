@@ -11,7 +11,7 @@ app = FastAPI()
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Replace "*" with Flutter app domain in prod
+    allow_origins=[""],  # Replace "" with Flutter app domain in prod
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -19,13 +19,13 @@ app.add_middleware(
 
 @app.post("/register")
 async def register_user(
-    file: UploadFile = File(...), 
+    file: UploadFile = File(...),
     name: str = Form(...),
-    emp_id: str = Form(...),
-    img_url: str = Form(...)
+    empId: str = Form(...),
+    imgUrl: str = Form(...)
 ):
     # Check if EmpID already exists
-    if users_col.find_one({"emp_id": emp_id}):
+    if users_col.find_one({"empId": empId}):
         return {"status": "error", "message": "Employee ID already registered"}
 
     # Get face embedding directly from the uploaded file
@@ -36,9 +36,9 @@ async def register_user(
     # Save user data to database
     user_data = {
         "name": name,
-        "emp_id": emp_id,
+        "empId": empId,
         "embedding": embedding.tolist(),
-        "img_url": img_url
+        "imgUrl": imgUrl
     }
     users_col.insert_one(user_data)
 
@@ -56,10 +56,10 @@ async def upload_photo(file: UploadFile = File(...)):
         known_emb = np.array(user["embedding"])
         if compare_embeddings(known_emb, new_emb):
             return {
-                "status": "present", 
+                "status": "present",
                 "employee": user["name"],
-                "emp_id": user["emp_id"],
-                "img_url": user["img_url"]
+                "empId": user["empId"],
+                "imgUrl": user["imgUrl"]
             }
 
     return {"status": "not found"}
