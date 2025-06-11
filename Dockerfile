@@ -31,7 +31,7 @@ RUN mkdir -p /root/.insightface/models/buffalo_l && \
 RUN mkdir -p /app/images
 
 # Expose port
-EXPOSE 8080
+EXPOSE 8090
 
 # Run the FastAPI app
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8080"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8090"]

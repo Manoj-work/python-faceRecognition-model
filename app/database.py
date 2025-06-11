@@ -10,7 +10,7 @@ def get_database_connection():
         try:
             # Connect to MongoDB
             client = MongoClient(
-                "mongodb://medhir:medhir@192.168.0.200:27017/",
+                "mongodb://medhir:medhir@192.168.0.200:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.3.8",
                 serverSelectionTimeoutMS=5000,
                 connectTimeoutMS=5000,
                 socketTimeoutMS=5000
