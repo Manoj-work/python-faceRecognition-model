@@ -20,8 +20,8 @@ def get_database_connection():
             client.admin.command('ping')
             print("Successfully connected to MongoDB!")
             
-            # Use the 'attendance' database
-            db = client["Attendance-Service"]
+            # Use the 'REST' database
+            db = client["REST"]
             
             # Use the 'users' collection
             users_col = db["Registered-Users"]
